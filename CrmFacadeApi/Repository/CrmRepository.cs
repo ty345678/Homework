@@ -13,7 +13,16 @@ namespace CrmFacadeApi.Repository
             //TODO, Data Storage
             try
             {
-                var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(customer);
+                var jsonString = "";
+
+                if (customer.Address == null)
+                {
+                    BadCustomer badCustomer = new BadCustomer();
+                    badCustomer.CustomerName = customer.CustomerName;
+                    badCustomer.CustomerEmail = customer.CustomerEmail;
+                    jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(badCustomer);
+                }
+                else { jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(customer); }
 
                 Console.WriteLine(jsonString);
                 return true;
@@ -25,23 +34,7 @@ namespace CrmFacadeApi.Repository
                 return false;
             }
         }
-        public bool UpsertCustomer(BadCustomer customer)
-        {
-            //TODO, Data Storage
-            try
-            {
-                var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(customer);
-
-                Console.WriteLine(jsonString);
-                return true;
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Exception {e}");
-                return false;
-            }
-        }
+        
 
     }
 }

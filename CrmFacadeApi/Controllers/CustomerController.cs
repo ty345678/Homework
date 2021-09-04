@@ -31,17 +31,10 @@ namespace CrmFacadeApi.Controllers
 
             Response result = _customerService.ValidCustomer(customer);
 
-            if (result.Customer.Address == null)
-            {
-                BadCustomer badCustomer = new BadCustomer();
-                badCustomer.CustomerName = result.Customer.CustomerName;
-                badCustomer.CustomerEmail = result.Customer.CustomerEmail;
-                _crmRepository.UpsertCustomer(badCustomer);
+            if (_crmRepository.UpsertCustomer(result.Customer))
                 return Ok();
-            }
-
-            _crmRepository.UpsertCustomer(result.Customer);
-            return Ok();
+            else
+                return StatusCode(400); 
         }
     }
 }
