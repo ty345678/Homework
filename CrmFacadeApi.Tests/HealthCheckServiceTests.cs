@@ -13,7 +13,9 @@ namespace CrmFacadeApi.Tests
         [Fact]
         public async Task VerifyFakeHealthyResult()
         {
+
             var sut = new HealthCheckService();
+
             var result = await sut.IsHealthyAsync(new CancellationToken());
             Assert.True(result);
         }

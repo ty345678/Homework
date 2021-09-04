@@ -40,18 +40,16 @@ namespace CrmFacadeApi.Services
                 var response = client.DownloadString(url);
                 var xdoc = XDocument.Parse(response.ToString());
 
-                //_logger.LogInformation($"Parsing Address************************************************");
                 //_logger.LogInformation($"{xdoc}");
 
                 foreach (XElement element in xdoc.Descendants("Address"))
                 {
-                    if (element.Element("Error")==null)
+                    if (element.Element("Error") == null)
                     {
                         validResponse = true;
                     }
 
                 }
-                //_logger.LogInformation($"Address Retreived");
             }
             catch (WebException e)
             {

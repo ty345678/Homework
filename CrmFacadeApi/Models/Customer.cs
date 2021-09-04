@@ -1,6 +1,4 @@
 ﻿
-
-
 namespace CrmFacadeApi.Models
 {
     public class Customer

@@ -26,6 +26,6 @@ namespace CrmFacadeApi
                     webBuilder.UseStartup<Startup>();
                 })
             ;
-        
+
     }
 }

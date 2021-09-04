@@ -5,13 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-
-//using CrmFacadeApi.Domain.Repositories;
-//using CrmFacadeApi.Domain.Services;
-//using CrmFacadeApi.Persistence.Repositories;
-//using CrmFacadeApi.Persistence.Contexts;
 
 namespace CrmFacadeApi
 {
@@ -30,15 +24,6 @@ namespace CrmFacadeApi
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddDbContext<AppDbContext>(options =>
-            //{
-            //    options.UseInMemoryDatabase("CrmFacadeApi-in-memory");
-            //});
-
-
-
-
-
             services.AddControllers();
             services.AddScoped<IHealthCheckService, HealthCheckService>();
             services.AddScoped<ICustomerService, CustomerService>();
@@ -54,14 +39,9 @@ namespace CrmFacadeApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
-
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

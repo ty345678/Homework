@@ -1,8 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using CrmFacadeApi.Models;
-using CrmFacadeApi.Controllers;
-using System.Collections.Generic;
+﻿using CrmFacadeApi.Models;
 
 namespace CrmFacadeApi.Services
 {

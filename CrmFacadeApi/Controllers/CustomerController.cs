@@ -5,17 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 
-
-
-/// <summary>
-/// Reference controller implementation.
-/// </summary>
 namespace CrmFacadeApi.Controllers
 {
     [ApiController]
-    //[Route("[controller]")]
-    //[Route("test")]
-    //[Route("/customer")]
     [Route("")]
     public class CustomerController : ControllerBase
     {
@@ -29,20 +21,15 @@ namespace CrmFacadeApi.Controllers
             _crmRepository = crmRepository;
             _customerService = customerSerivce;
             _logger = logger;
-
         }
-
 
         [HttpPost]
         public IActionResult AddCustomerController([FromBody] Customer customer)
         {
-
-
             if (!ModelState.IsValid)
                 return BadRequest("Bad Request");
 
             Response result = _customerService.ValidCustomer(customer);
-
 
             if (result.Customer.Address == null)
             {
